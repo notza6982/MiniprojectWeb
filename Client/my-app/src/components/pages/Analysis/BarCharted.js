@@ -61,7 +61,7 @@ function BarCharted() {
             var datainterestime = []
             for(var i = 0; i<datas3.length;i++){
               datainterestime.push({
-              datatime: datas3[i][0],
+              datatime: datas3[i][0]+ ":00",
               numtime: datas3[i][1]
             })
           }
@@ -106,9 +106,10 @@ function BarCharted() {
       <h5>ช่วงอายุสนใจของแว่นแต่ละประเภท</h5>
         <BarChart width={1400} height={300} data={datas2}>
         <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="nameage" fontSize={12} angle={-25} />
+          <XAxis dataKey="nameage" fontSize={12} angle={-15} />
           <YAxis fontSize={12} />
-          <Bar dataKey="numage" barSize={20} fill="#4682B4"/>
+          <Tooltip />
+          <Bar dataKey="numage" barSize={40} fill="#4682B4"/>
         </BarChart> 
       <br></br>         
       <hr></hr>
@@ -118,16 +119,18 @@ function BarCharted() {
         <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="namegender" fontSize={12} angle={-30} />
           <YAxis fontSize={12} />
-          <Bar dataKey="numgender" barSize={25} fill="#483D8B"/>
+          <Tooltip />
+          <Bar dataKey="numgender" barSize={35} fill="#483D8B"/>
         </BarChart>
       <br></br>
       <hr></hr>
 
       <h5>ช่วงเวลาที่คนเข้าชมสินคัา(กราฟ)</h5>
-        <BarChart width={800} height={300} data={datas3}>
+        <BarChart width={1000} height={300} data={datas3}>
         <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="datatime" fontSize={12} />
           <YAxis fontSize={12} />
+          <Tooltip />
           <Bar dataKey="numtime" barSize={20} fill="#8B8970"/>
         </BarChart>
       <br></br>
@@ -138,6 +141,7 @@ function BarCharted() {
         <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="nameperson" fontSize={12} />
           <YAxis fontSize={12} />
+          <Tooltip />
           <Bar dataKey="numperson" barSize={40} fill="#00688B"/>
         </BarChart> 
       <br></br>         
@@ -146,8 +150,9 @@ function BarCharted() {
       <h5>จำนวนยอดขายของแว่นแต่ละประเภท</h5>
         <BarChart width={800} height={300} data={datas5}>
         <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="nameitem" fontSize={15}/>
+          <XAxis dataKey="nameitem"  fontSize={15}/>
           <YAxis fontSize={17} />
+          <Tooltip />
           <Bar dataKey="numitem" barSize={50} fill="#8884d8"/>
         </BarChart> 
       <br></br>  
