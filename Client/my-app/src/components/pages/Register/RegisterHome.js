@@ -60,7 +60,7 @@ function RegisterHome() {
                 marginLeft: "25%"
             }}>
                 <span style={{ fontSize: 20 }}>
-                    สมัครสมาชิก Glass ShopHome
+                    สมัครสมาชิก
             </span>
                 <Divider />
                 <Form

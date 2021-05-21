@@ -73,7 +73,7 @@ function Home() {
           <Col className="gutter-row"  xs={24} md={24}  xl={12}>
           <Link to="/GlassesShop/AI">
             <div class="frame-chooseG">
-              <h1 class="style-chooseG">ตัวอย่างหน้าช่วยเลือกแว่น</h1>
+              <h1 class="style-chooseG">ปัญญาประดิษฐ์ช่วยเลือกแว่นตา</h1>
             </div>
             </Link>
           </Col>

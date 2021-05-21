@@ -111,7 +111,7 @@ function Relateglasses() {
                         <Col xs={24} lg={8} xl={8}>
                             <Card type="inner"
                                 hoverable
-                                cover={<img alt="glasses!!" onClick={() => getitem(data[2])} src={data[7]} width="95%" height="150" />}
+                                cover={<img alt="glasses!!" onClick={() => getitem(data[2])} src={data[7]} width="100%" height="100%" />}
                             >
                                 <div onClick={() => getitem(data[2])}>
                                     <Meta title={data[5]} description={"Category : " + data[8]} /><br />

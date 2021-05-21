@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Row, Col, Breadcrumb, Button, Card, Select, Modal, Tabs ,Pagination,notification,Spin,AutoComplete   } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
-// import GenItem from './GenItem'
+import './ShopHome.css'
 import Paging from './Paging'
 import Genpopular from './Genpopular'
 import axios from 'axios';
@@ -56,6 +56,7 @@ function ShopHome() {
         })
         setloading(false)
     }, [])
+
     const onChangepage = async(page) => {
         console.log(page);
         setcurrentpage(page)
@@ -282,11 +283,11 @@ function ShopHome() {
                             <Col className="gutter-row" xs={24} md={12} xl={6}>
                                 <Card
                                     hoverable
-                                    cover={<img alt="glasses!!" src={data[3]} onClick={() => getitem(data[0])} width="95%" height="150" />}
+                                    cover={<img alt="glasses!!" src={data[3]} onClick={() => getitem(data[0])} width="100%" height="100%" />}
                                 >
                                     <div onClick={() => getitem(data[0])}>
                                         <Meta title={data[1]} description={"Category : " + data[4]} /><br />
-                                        <p><h7 style={fontLeft}>{data[5]} </h7> <h7 style={fontRight}>{data[2]} ฿</h7></p>
+                                        <p><h7 style={fontLeft}>{data[5]} </h7> <h7 style={fontRight}>{(data[2]).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')} ฿</h7></p>
                                         <br />
                                     </div>
                                     <Button type="button" onClick={() => onClickHandler(data)} style={blue}>
@@ -303,6 +304,7 @@ function ShopHome() {
             </div>
         )
     }
+
     const useajax = async (x) => {
         console.log(x)
         let name = document.getElementById('searchbar').value
@@ -326,14 +328,14 @@ function ShopHome() {
     return (
         <div>
             <Row>
-                <Col span={6} push={18} >
-                    <div style={{ textAlign: 'center' }}>
+                <Col span={(window.innerWidth > 768) ? 6 : 0} push={(window.innerWidth > 768) ? 18 : 0}  >
+                    <div  style={{ textAlign: 'center' }}>
                         <form action="Genpopular.js" method="GET">
-                        <AutoComplete id="searchbar" name="searchbar" placeholder="searching" onChange={useajax}
-    style={{ width: 200 }}
-    options={optionsearch}
-  />
-                            {/* <input type="text" id="searchbar" name="searchbar" placeholder="searching" onChange={useajax} /> */}
+                            <AutoComplete id="searchbar" name="searchbar" placeholder="searching" onChange={useajax}
+                            style={{ width: 200 }}
+                            options={optionsearch}
+                            />
+                                {/* <input type="text" id="searchbar" name="searchbar" placeholder="searching" onChange={useajax} /> */}
                             <Button type="submit" id="" name="search"  onClick={() => searchdata()}><SearchOutlined /></Button><br />
                         </form>
                         <div id="pop" style={{ paddingLeft: "20px", paddingTop: "20px" }}>
@@ -341,7 +343,7 @@ function ShopHome() {
                         </div>
                     </div>
                 </Col>
-                <Col span={18} pull={6}>
+                <Col span={(window.innerWidth > 768) ? 18 : 24} pull={(window.innerWidth > 768) ? 6 : 0}>
                     <div id="Nav" style={{ textAlign: 'left' }}>
                         <Breadcrumb>
                             <Breadcrumb.Item>Home</Breadcrumb.Item>

@@ -110,7 +110,7 @@ function Genpopular() {
 
   return (
     <div>
-      <Card title="Populate" extra={<a href="#">More</a>}
+      <Card title="Populate" 
         style={{ backgroundColor: '#f0f2f5', border: 0, borderRadius: "15px" }}
         headStyle={{ backgroundColor: '#f0f2f5', border: 0 }}
         bodyStyle={{ backgroundColor: '#FBFCFC', border: 0 }}>
@@ -119,7 +119,7 @@ function Genpopular() {
               <div style={{ paddingBottom: "20px" }}>
                 <Card type="inner"
                   hoverable
-                  cover={<img alt="glasses!!" onClick={() => getitem(data[2])} src={data[7]} width="95%" height="150" />}
+                  cover={<img alt="glasses!!" onClick={() => getitem(data[2])} src={data[7]} width="95%" height="100%" />}
                 >
                   <div onClick={() => getitem(data[2])}>
                     <Meta title={data[5]} description={"Category : " + data[8]} /><br />
@@ -139,6 +139,7 @@ function Genpopular() {
         }
 
       </Card>
+      
       <Modal
         title=" Glasses information "
         centered
