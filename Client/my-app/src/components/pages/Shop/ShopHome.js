@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Breadcrumb, Button, Card, Select, Modal, Tabs ,Pagination,notification,Spin   } from 'antd';
+import { Row, Col, Breadcrumb, Button, Card, Select, Modal, Tabs ,Pagination,notification,Spin,AutoComplete   } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 // import GenItem from './GenItem'
 import Paging from './Paging'
@@ -33,6 +33,7 @@ function ShopHome() {
     const [datapopup, setdatapopup] = useState([[]]);
     const [countpage, setcountpage] = useState(10);
     const [currentpage, setcurrentpage] = useState(1);
+    const [optionsearch, setoptionsearch] = useState([]);
     const [loading, setloading] = useState(true);
     const [datasql, setdatasql] = useState({
         event:" ",
@@ -302,14 +303,38 @@ function ShopHome() {
             </div>
         )
     }
+    const useajax = async (x) => {
+        console.log(x)
+        let name = document.getElementById('searchbar').value
+        await axios.get("/searchitem1/iteminfo/" + x + "")
+            .then(res => {
+                // const datas = res.data[0];
+                const datas = res.data;
+                console.log(datas)
+                let countoption = []
+                for(var i=0;i<datas.length;i++){
+                    countoption.push({
+                        value:datas[i]
+                    })
+                }
+                // var a = countoption.filter(function (value, index) { return countoption.indexOf(value) == index })
+                // console.log(a)
+                //setdatas(datas)
+                setoptionsearch(countoption)
+            })
+    }
     return (
         <div>
             <Row>
                 <Col span={6} push={18} >
                     <div style={{ textAlign: 'center' }}>
                         <form action="Genpopular.js" method="GET">
-                            <input type="text" id="searchbar" name="searchbar" placeholder="searching" />
-                            <Button type="submit" id="" name="search" onClick={() => searchdata()}><SearchOutlined /></Button><br />
+                        <AutoComplete id="searchbar" name="searchbar" placeholder="searching" onChange={useajax}
+    style={{ width: 200 }}
+    options={optionsearch}
+  />
+                            {/* <input type="text" id="searchbar" name="searchbar" placeholder="searching" onChange={useajax} /> */}
+                            <Button type="submit" id="" name="search"  onClick={() => searchdata()}><SearchOutlined /></Button><br />
                         </form>
                         <div id="pop" style={{ paddingLeft: "20px", paddingTop: "20px" }}>
                             <Genpopular />

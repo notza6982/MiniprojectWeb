@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
 import axios from 'axios';
 
 function BarCharted() {
@@ -27,13 +27,17 @@ function BarCharted() {
       .then(res => {
         const datas1 = res.data;
         console.log(datas1)
-        // this.setState({ datas1: datas });
         var datagender = []
         for(var i = 0; i<datas1.length;i++){
           datagender.push({
             namegender: datas1[i][1] +" ("+ datas1[i][3][0] +") " ,
             numgender: datas1[i][2]
           })
+          // if(datas1[i][3][0] == "m"){
+          //   datagender[i].namegender = <span style={{color:"skyblue"}}> {datagender[i].namegender}</span>
+          // }else{
+          //   datagender[i].namegender =  <span style={{color:"pink"}}> {datagender[i].namegender}</span>
+          // }
         }
         setdatas1(datagender)
       })
@@ -46,7 +50,7 @@ function BarCharted() {
           var dataagerange = []
           for(var i = 0; i<datas2.length;i++){
             dataagerange.push({
-              nameage: datas2[i][1]+ " ("+ datas2[i][3]+ ") " ,
+              nameage: datas2[i][1]+ " ("+ (Number(new Date().getFullYear())-Number(datas2[i][3]))+ ") " ,
               numage: datas2[i][2]
             })
           }
@@ -101,6 +105,7 @@ function BarCharted() {
   }, [])
 
   return (
+
     <div>
       
       <h5>ช่วงอายุสนใจของแว่นแต่ละประเภท</h5>
@@ -125,8 +130,8 @@ function BarCharted() {
       <br></br>
       <hr></hr>
 
-      <h5>ช่วงเวลาที่คนเข้าชมสินคัา(กราฟ)</h5>
-        <BarChart width={1000} height={300} data={datas3}>
+      <h5>ช่วงเวลาที่คนเข้าชมสินค้า</h5>
+        <BarChart width={800} height={300} data={datas3}>
         <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="datatime" fontSize={12} />
           <YAxis fontSize={12} />

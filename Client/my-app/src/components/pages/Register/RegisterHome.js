@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, Input, Button, Row, Col, Card, Checkbox, Divider, notification, message } from "antd";
+import { Form, Input, Button, Row, Col, Card, Checkbox, Divider, notification, message,Radio } from "antd";
 import axios from 'axios';
 var Crypto = require('crypto-js')
 const { TextArea } = Input;
@@ -165,15 +165,11 @@ function RegisterHome() {
                         rules={[
                             { required: true, message: "Please input your E-Gender!" },
                         ]}
-                    >
-                        <span >&nbsp;
-                            <Input
-                                type="radio" id="male"  value="male"
-                            />  male &nbsp;&nbsp;&nbsp;
-                            <Input
-                                type="radio" id="female"value="female"
-                            /> female
-                        </span>
+                    > 
+                    <Radio.Group  style={{marginLeft:"2%"}}>
+                    <Radio id="male" value={"male"}>male</Radio >
+                    <Radio id="female" value={"female"}>female</Radio >
+                </Radio.Group>
                     </Form.Item>
 
                     <Form.Item

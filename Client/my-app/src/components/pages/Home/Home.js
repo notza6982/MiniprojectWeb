@@ -1,6 +1,7 @@
 import './home.css'
 import React from "react";
 import { Row, Col, Card } from "antd";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -61,22 +62,28 @@ function Home() {
     // </div>    
 
     <div class="Fcontainer">
+    <Link to="/GlassesShop/Shopping">
       <div class='frame-nameshop'>
         <h1 class="style-nameshop">Glasses Shop</h1>
       </div>
+            </Link>
       <br></br>
       <div class="frame-option">
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
           <Col className="gutter-row"  xs={24} md={24}  xl={12}>
+          <Link to="/GlassesShop/AI">
             <div class="frame-chooseG">
               <h1 class="style-chooseG">ตัวอย่างหน้าช่วยเลือกแว่น</h1>
             </div>
+            </Link>
           </Col>
           <br></br>
           <Col className="gutter-row" xs={24} md={24} xl={12}>
+          <Link to="/GlassesShop/Contact">
             <div class="frame-promotion">
-              <h1 class="style-promotion">Promotion   แว่น</h1>
+              <h1 class="style-promotion">Contact Us</h1>
             </div>
+            </Link>
           </Col>
         </Row>
       </div>

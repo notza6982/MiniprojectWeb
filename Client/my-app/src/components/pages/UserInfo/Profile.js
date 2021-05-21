@@ -17,15 +17,16 @@ function Profile() {
     const handleCancel = () => {
         setshowmodaladdpic(false);
     };
-    const onChangeHandler = (event)=>{
+    const onChangeHandler = async (event)=>{
         console.log(event.target.files[0])
         setdataprofilepic(event.target.files[0])
         let body = {uid : localStorage.getItem('uid')}
-        axios.get("/get_image_path", { params: { body } })
+        await axios.get("/get_image_path", { params: { body } })
         .then(response => {
           localStorage.setItem('path',response.data);
           console.log("response: ", response.data)
         })
+
     }
 
     return (
@@ -52,11 +53,11 @@ function Profile() {
 
 
 
-            <Modal title="อัพโหลดรูปภาพ" visible={showmodaladdpic} onOk={handleOk} onCancel={handleCancel}>
+            <Modal title="อัพโหลดรูปภาพ" visible={showmodaladdpic} onOk={handleOk} onCancel={handleCancel} footer={null}>
             
             <form action={"/saveimages/"+localStorage.getItem('uid')} method="POST" enctype="multipart/form-data">
                 <input type="file" name="file" onChange={onChangeHandler}/>
-                <input type="submit"/>
+                <input type="submit" />
             </form>
       </Modal>
 
